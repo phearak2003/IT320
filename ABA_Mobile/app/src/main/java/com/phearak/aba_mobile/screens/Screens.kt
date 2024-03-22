@@ -5,4 +5,5 @@ sealed class Screens(val screen: String){
     data object Locator:Screens("locator")
     data object GovernmentServices:Screens("governmentServices")
     data object ABACashBack:Screens("abaCashBack")
+    data object ABAScan:Screens("abaScan")
 }

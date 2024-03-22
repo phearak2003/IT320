@@ -40,6 +40,7 @@ import androidx.navigation.compose.rememberNavController
 import com.phearak.aba_mobile.screens.GovernmentServices
 import com.phearak.aba_mobile.screens.Home
 import com.phearak.aba_mobile.screens.Locator
+import com.phearak.aba_mobile.screens.ScanQrScreen
 import com.phearak.aba_mobile.screens.Screens
 import com.phearak.aba_mobile.ui.theme.ABA_MobileTheme
 import com.phearak.aba_mobile.ui.theme.Primary
@@ -165,6 +166,7 @@ fun Nav(){
                 composable(Screens.Home.screen){ GovernmentServices() }
                 composable(Screens.Home.screen){ Locator() }
                 composable(Screens.Home.screen){ Home() }
+                composable(Screens.Home.screen){ ScanQrScreen(navigationController) }
             }
         }
     }
