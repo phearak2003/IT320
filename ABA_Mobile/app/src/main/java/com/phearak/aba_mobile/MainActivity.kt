@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -42,6 +43,7 @@ import com.phearak.aba_mobile.screens.Home
 import com.phearak.aba_mobile.screens.Locator
 import com.phearak.aba_mobile.screens.ScanQrScreen
 import com.phearak.aba_mobile.screens.Screens
+import com.phearak.aba_mobile.screens.TransfersScreen
 import com.phearak.aba_mobile.ui.theme.ABA_MobileTheme
 import com.phearak.aba_mobile.ui.theme.Primary
 import kotlinx.coroutines.launch
@@ -52,9 +54,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             ABA_MobileTheme {
                 Surface(
-//                    modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val navController = rememberNavController()
+                    //ScanQrScreen(navController = navController)
+                    //TransfersScreen(navController)
                     Nav()
                 }
             }
@@ -167,6 +171,7 @@ fun Nav(){
                 composable(Screens.Home.screen){ Locator() }
                 composable(Screens.Home.screen){ Home() }
                 composable(Screens.Home.screen){ ScanQrScreen(navigationController) }
+                composable(Screens.Home.screen){ TransfersScreen(navigationController) }
             }
         }
     }
