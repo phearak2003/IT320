@@ -38,11 +38,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.phearak.aba_mobile.screens.AccountsScreen
 import com.phearak.aba_mobile.screens.GovernmentServices
 import com.phearak.aba_mobile.screens.Home
 import com.phearak.aba_mobile.screens.Locator
 import com.phearak.aba_mobile.screens.ScanQrScreen
 import com.phearak.aba_mobile.screens.Screens
+import com.phearak.aba_mobile.screens.ServicesScreen
 import com.phearak.aba_mobile.screens.TransfersScreen
 import com.phearak.aba_mobile.ui.theme.ABA_MobileTheme
 import com.phearak.aba_mobile.ui.theme.Primary
@@ -172,6 +174,8 @@ fun Nav(){
                 composable(Screens.Home.screen){ Home() }
                 composable(Screens.Home.screen){ ScanQrScreen(navigationController) }
                 composable(Screens.Home.screen){ TransfersScreen(navigationController) }
+                composable(Screens.Home.screen){ AccountsScreen(navigationController) }
+                composable(Screens.Home.screen){ ServicesScreen(navigationController) }
             }
         }
     }
