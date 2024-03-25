@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -121,11 +122,13 @@ fun ComposeServices(navController: NavController) {
 fun composeServiceBody() {
     Column(
             modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 100.dp)
+                .fillMaxSize()
+                .padding(top = 100.dp)
+                .verticalScroll(rememberScrollState())
     ) {
         Box {
-            Row(Modifier
+            Row(
+                Modifier
                     .fillMaxWidth()
                     .padding(start = 15.dp)) {
                 Column(
@@ -152,13 +155,13 @@ fun composeServiceBody() {
                             painter = painterResource(id = R.drawable.ic_service),
                             contentDescription = null,
                             modifier = Modifier
-                                    .background(
-                                            shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
-                                            color = Secondary
-                                    )
-                                    .width(200.dp)
-                                    .height(150.dp)
-                                    .alpha(0.5f), // Change the opacity here
+                                .background(
+                                    shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
+                                    color = Secondary
+                                )
+                                .width(200.dp)
+                                .height(150.dp)
+                                .alpha(0.5f), // Change the opacity here
                             contentScale = ContentScale.FillBounds
                     )
                 }
@@ -287,6 +290,382 @@ fun composeServiceBody() {
                     }
 
                 }
+                Column(modifier = Modifier
+                    .padding(15.dp)
+                    .fillMaxSize()) {
+                    Text(
+                        text = "Travel & Tours",
+                        textAlign = TextAlign.Start,
+                        color = White,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(bottom = 10.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .horizontalScroll(rememberScrollState())
+                    ) {
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_domain,
+                                R.drawable.ic_domain_blue,
+                                linearGradient(
+                                    colors = listOf(Color(0xFF004081), Color(0xFF002340)) // Example gradient from dark blue to light blue
+                                ),
+                                "Tovtrio",
+                                "Your new adventure awaits!  " +
+                                        " Tourtrip empower the local",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_cartax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Road Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_propertytax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Property Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_prefillingtax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Prefilling Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                    }
+
+                }
+                Column(modifier = Modifier
+                    .padding(15.dp)
+                    .fillMaxSize()) {
+                    Text(
+                        text = "Transportation",
+                        textAlign = TextAlign.Start,
+                        color = White,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(bottom = 10.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .horizontalScroll(rememberScrollState())
+                    ) {
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_domain,
+                                R.drawable.ic_domain_blue,
+                                linearGradient(
+                                    colors = listOf(Color(0xFF004081), Color(0xFF002340)) // Example gradient from dark blue to light blue
+                                ),
+                                "Domain .kh",
+                                "Domain Name .kh Registration",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_cartax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Road Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_propertytax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Property Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_prefillingtax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Prefilling Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                    }
+                }
+                Column(modifier = Modifier
+                    .padding(15.dp)
+                    .fillMaxSize()) {
+                    Text(
+                        text = "Education & Training",
+                        textAlign = TextAlign.Start,
+                        color = White,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(bottom = 10.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .horizontalScroll(rememberScrollState())
+                    ) {
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_domain,
+                                R.drawable.ic_domain_blue,
+                                linearGradient(
+                                    colors = listOf(Color(0xFF004081), Color(0xFF002340)) // Example gradient from dark blue to light blue
+                                ),
+                                "Domain .kh",
+                                "Domain Name .kh Registration",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_cartax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Road Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_propertytax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Property Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_prefillingtax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Prefilling Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                    }
+                }
+                Column(modifier = Modifier
+                    .padding(15.dp)
+                    .fillMaxSize()) {
+                    Text(
+                        text = "Entertainment",
+                        textAlign = TextAlign.Start,
+                        color = White,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(bottom = 10.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .horizontalScroll(rememberScrollState())
+                    ) {
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_domain,
+                                R.drawable.ic_domain_blue,
+                                linearGradient(
+                                    colors = listOf(Color(0xFF004081), Color(0xFF002340)) // Example gradient from dark blue to light blue
+                                ),
+                                "Domain .kh",
+                                "Domain Name .kh Registration",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_cartax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Road Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_propertytax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Property Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_prefillingtax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Prefilling Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                    }
+                }
+                Column(modifier = Modifier
+                    .padding(15.dp)
+                    .fillMaxSize()) {
+                    Text(
+                        text = "Technology",
+                        textAlign = TextAlign.Start,
+                        color = White,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(bottom = 10.dp),
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .horizontalScroll(rememberScrollState())
+                    ) {
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_domain,
+                                R.drawable.ic_domain_blue,
+                                linearGradient(
+                                    colors = listOf(Color(0xFF004081), Color(0xFF002340)) // Example gradient from dark blue to light blue
+                                ),
+                                "Domain .kh",
+                                "Domain Name .kh Registration",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_cartax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Road Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_propertytax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Property Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                        Box(
+                            modifier = Modifier.width(300.dp) // Use weight modifier instead of width
+                        ) {
+                            cardWithRoundIcon(
+                                R.drawable.pc_prefillingtax,
+                                R.drawable.ic_tax,
+                                linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                ),
+                                "Prefilling Tax",
+                                "General Department of Taxation",
+                                200
+                            )
+                        }
+                    }
+                }
             }
         }
     }
@@ -389,7 +768,8 @@ fun cardWithRoundIcon(image: Int, icon: Int, iconBackground: Brush, name: String
                             textAlign = TextAlign.Start,
                             fontSize = 12.sp,
                             color = Color(0xFF89949F),
-                            modifier = Modifier.padding(start = 10.dp, top = 15.dp)
+                            modifier = Modifier.padding(start = 10.dp, top = 20.dp),
+                            lineHeight = 12.sp
                     )
                 }
 
