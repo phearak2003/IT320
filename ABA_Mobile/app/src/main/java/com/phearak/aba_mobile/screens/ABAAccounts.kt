@@ -2,10 +2,14 @@ package com.phearak.aba_mobile.screens
 
 import android.annotation.SuppressLint
 import android.widget.Space
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,6 +38,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -52,7 +61,7 @@ import com.phearak.aba_mobile.ui.theme.BackgroundBlue
 import com.phearak.aba_mobile.ui.theme.Primary
 import com.phearak.aba_mobile.ui.theme.Secondary
 
-@Preview(showSystemUi = true)
+
 @Composable
 fun AccountsScreenPreview(){
     val navController = rememberNavController()
@@ -243,15 +252,14 @@ fun composeAccountsBody() {
         }
     }
 }
-
 @Composable
 fun account(startColor : Color,acName : String,acNumber:String,acType:String,acBalance:String,acCard : String?){
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(110.dp)
+            .height(100.dp)
             .padding(horizontal = 10.dp, vertical = 4.dp)
-            .background(Color(0xFF67737F), shape = RoundedCornerShape(10.dp))
+            .background(Color(0xFF363e47), shape = RoundedCornerShape(10.dp))
     ){
         Row(
             modifier = Modifier
@@ -277,9 +285,9 @@ fun account(startColor : Color,acName : String,acNumber:String,acType:String,acB
                         fontSize = 16.sp, fontWeight = FontWeight.Bold
                     )
                     Row() {
-                        Text(acNumber,color = Color.White,modifier=Modifier.padding(end = 5.dp),fontSize = 12.sp)
-                        Text("|",color = Color.White,modifier=Modifier.padding(end = 5.dp),fontSize = 12.sp)
-                        Text(acType,color = Color.White,fontSize = 12.sp)
+                        Text(acNumber,color = Color(0xFF89949F),modifier=Modifier.padding(end = 5.dp),fontSize = 12.sp)
+                        Text("|",color = Color(0xFF89949F),modifier=Modifier.padding(end = 5.dp),fontSize = 12.sp)
+                        Text(acType,color = Color(0xFF89949F),fontSize = 12.sp)
                     }
                 }
             }

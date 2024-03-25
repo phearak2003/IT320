@@ -61,6 +61,8 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     //ScanQrScreen(navController = navController)
                     //TransfersScreen(navController)
+                    //ServicesScreen(navController)
+                    //AccountsScreen(navController)
                     Nav()
                 }
             }
@@ -83,8 +85,8 @@ fun Nav(){
         drawerContent = {
             ModalDrawerSheet {
                 Box(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(150.dp)){
+                        .fillMaxWidth()
+                        .height(150.dp)){
                     Text(text = "")
                 }
 
