@@ -38,9 +38,11 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.phearak.aba_mobile.screens.AccountOpeningScreen
 import com.phearak.aba_mobile.screens.AccountsScreen
 import com.phearak.aba_mobile.screens.GovernmentServices
 import com.phearak.aba_mobile.screens.Home
+import com.phearak.aba_mobile.screens.LoansScreen
 import com.phearak.aba_mobile.screens.Locator
 import com.phearak.aba_mobile.screens.ScanQrScreen
 import com.phearak.aba_mobile.screens.Screens
@@ -63,7 +65,8 @@ class MainActivity : ComponentActivity() {
                     //TransfersScreen(navController)
                     //ServicesScreen(navController)
                     //AccountsScreen(navController)
-                    Nav()
+                    AccountOpeningScreen(navController)
+                   // Nav()
                 }
             }
         }
