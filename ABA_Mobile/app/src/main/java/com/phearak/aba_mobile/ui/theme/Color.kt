@@ -16,3 +16,7 @@ val Primary = Color(0xFF035F86)
 val Secondary = Color(0xFF042335)
 val Sky = Color(0xFF10BAD3)
 val Red = Color(0xFFEE5351)
+
+val Main = Color(0xFF02344C)
+val bg = Color(0xFF101D27)
+val font = Color(0xFF3F98B7)
