@@ -145,27 +145,29 @@ fun TransferBody() {
                             .padding(bottom = 7.dp)
                     )
                     Text(
-                        text = "Transfer money to your friends, relatives or partners in couple of simple steps.",
+                        text = "Transfer money to your friends,",
+                        textAlign = TextAlign.Start,
+                        color = Color(0xFFBEDADD),
+                        fontSize = 12.sp,
+                    )
+                    Text(
+                        text = "relatives or partners in couple of simple steps.",
                         textAlign = TextAlign.Start,
                         color = Color(0xFFBEDADD),
                         fontSize = 12.sp,
                     )
                 }
-                Box() {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_service),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .background(
-                                shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
-                                color = Secondary
-                            )
-                            .width(200.dp)
-                            .height(150.dp)
-                            .alpha(0.5f),
-                        contentScale = ContentScale.FillBounds
-                    )
-                }
+            }
+            Box(
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.transfer),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .size(110.dp)
+                        .padding(start = 290.dp)
+                )
             }
             Box(
             ) {
@@ -228,6 +230,17 @@ fun TransferBody() {
                             "International Transfer",
                             "Send money abroad via various channels"
                         )
+                        TransferCard(
+                            R.drawable.t_transcard,
+                            linearGradient(
+                                colors = listOf(Color(0xFFffffff), Color(0xFFffffff))
+                            ),
+                            "International Transfer",
+                            "Send money abroad via various channels",
+                            R.drawable.ic_visa,
+                            R.drawable.ic_mastercard,
+                            R.drawable.ic_visa
+                        )
                     }
                 }
                 Box(
@@ -245,13 +258,23 @@ fun TransferBody() {
                         contentAlignment = Alignment.CenterStart
 
                     ) {
-                        Text(
-                            text = "Search",
-                            color = White,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier
-                                .padding(start = 15.dp)
-                        )
+                        Row {
+                            Image(
+                                painter = painterResource(id = R.drawable.search),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .padding(start = 10.dp, top = 3.dp)
+
+                                )
+                            Text(
+                                text = "Search",
+                                color = White,
+                                fontWeight = FontWeight.Medium,
+                                modifier = Modifier
+                                    .padding(top = 12.dp)
+                            )
+                        }
                     }
                 }
             }
@@ -307,6 +330,90 @@ fun TransferBox(icon: Int, iconBackground: Brush, name:String, des:String){
                 fontSize = 13.sp,
                 modifier = Modifier.padding(start = 8.dp)
             )
+            Text(
+                text = des,
+                textAlign = TextAlign.Start,
+                fontSize = 10.sp,
+                color = Color(0xFF88939D),
+                modifier = Modifier.padding(start = 8.dp, top = 3.dp, bottom = 17.dp),
+                lineHeight = 15.sp
+            )
+        }
+    }
+}
+
+@Composable
+fun TransferCard(icon: Int, iconBackground: Brush, name:String, des:String, icon1: Int, icon2: Int, icon3: Int){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 10.dp, bottom = 0.dp, start = 10.dp, end = 10.dp)
+            .background(color = Color(0xFF1D2F38), shape = RoundedCornerShape(5.dp)),
+        horizontalArrangement = Arrangement.Start,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(0.2f)
+                .padding(top = 18.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .background(shape = CircleShape, brush = iconBackground)
+                    .border(shape = CircleShape, width = 1.dp, color = White)
+                    .size(40.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(id = icon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(36.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 14.dp)
+
+        ) {
+            Row (
+            ){
+                Text(
+                    text = name,
+                    textAlign = TextAlign.Start,
+                    fontWeight = FontWeight.Bold,
+                    color = White,
+                    fontSize = 13.sp,
+                    modifier = Modifier
+                        .padding(start = 8.dp, top = 7.dp)
+                )
+                Image(
+                    painter = painterResource(id = icon1),
+                    contentDescription = des,
+                    modifier = Modifier
+                        .size(30.dp)
+                        .padding(start = 3.dp)
+                )
+                Image(
+                    painter = painterResource(id = icon2),
+                    contentDescription = des,
+                    modifier = Modifier
+                        .size(30.dp)
+                        .padding(end = 3.dp)
+                )
+                Image(
+                    painter = painterResource(id = icon3),
+                    contentDescription = des,
+                    modifier = Modifier
+                        .size(30.dp)
+                        .padding(end = 3.dp)
+                )
+            }
             Text(
                 text = des,
                 textAlign = TextAlign.Start,

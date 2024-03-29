@@ -3,6 +3,7 @@ package com.phearak.aba_mobile.screens
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,12 +14,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -28,7 +26,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Brush.Companion.linearGradient
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -43,7 +41,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.phearak.aba_mobile.R
 import com.phearak.aba_mobile.ui.theme.Main
-import com.phearak.aba_mobile.ui.theme.Secondary
 import com.phearak.aba_mobile.ui.theme.bg
 
 @Preview(showSystemUi = true)
@@ -144,27 +141,29 @@ fun PaymentBody() {
                             .padding(bottom = 7.dp)
                     )
                     Text(
-                        text = "Top-up phone, pay for utility bills and many other popular services free of charge.",
+                        text = "Top-up phone, pay for utility bills and",
+                        textAlign = TextAlign.Start,
+                        color = Color(0xFFBEDADD),
+                        fontSize = 12.sp
+                    )
+                    Text(
+                        text = " many other popular services free of charge.",
                         textAlign = TextAlign.Start,
                         color = Color(0xFFBEDADD),
                         fontSize = 12.sp
                     )
                 }
-                Box() {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_service),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .background(
-                                shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
-                                color = Main
-                            )
-                            .width(200.dp)
-                            .height(150.dp)
-                            .alpha(0.5f),
-                        contentScale = ContentScale.FillBounds
-                    )
-                }
+            }
+            Box(
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.dollar),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .size(110.dp)
+                        .padding(start = 290.dp)
+                )
             }
             Box(
             ) {
@@ -187,13 +186,16 @@ fun PaymentBody() {
                             "Choose from Favorites",
                             "Pay bills from your favorites list"
                         )
-                        TransferBox(
+                        PaymentBox(
                             R.drawable.p_phone,
                             linearGradient(
                                 colors = listOf(Color(0xFFffffff), Color(0xFFffffff))
                             ),
                             "Mobile Top-up",
-                            "Supported operators: "
+                            "Supported operators: ",
+                            R.drawable.cellcard,
+                            R.drawable.smart,
+                            R.drawable.metfone,
                         )
                         TransferBox(
                             R.drawable.p_plug,
@@ -299,12 +301,118 @@ fun PaymentBody() {
                             .size(40.dp),
                         contentAlignment = Alignment.CenterStart,
                     ) {
-                        Text(
-                            text = "Search",
-                            color = White,
-                            fontWeight = FontWeight.Normal,
-                            modifier = Modifier
-                                .padding(start = 40.dp)
+                        Row {
+                            Image(
+                                painter = painterResource(id = R.drawable.search),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .padding(start = 10.dp, top = 3.dp)
+
+                            )
+                            Text(
+                                text = "Search",
+                                color = White,
+                                fontWeight = FontWeight.Medium,
+                                modifier = Modifier
+                                    .padding(top = 12.dp)
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun PaymentBox(icon: Int, iconBackground: Brush, name:String, des:String, icon1: Int, icon2:Int, icon3: Int){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 10.dp, bottom = 0.dp, start = 10.dp, end = 10.dp)
+            .background(color = Color(0xFF1D2F38), shape = RoundedCornerShape(5.dp)),
+        horizontalArrangement = Arrangement.Start,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(0.2f)
+                .padding(top = 12.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .background(shape = CircleShape, brush = iconBackground)
+                    .border(shape = CircleShape, width = 1.dp, color = White)
+                    .size(40.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(id = icon),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(36.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
+        }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 14.dp)
+
+        ) {
+            Text(
+                text = name,
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight.Bold,
+                color = White,
+                fontSize = 13.sp,
+                modifier = Modifier.padding(start = 8.dp)
+            )
+            Row {
+                Text(
+                    text = des,
+                    textAlign = TextAlign.Start,
+                    fontSize = 10.sp,
+                    color = Color(0xFF88939D),
+                    modifier = Modifier.padding(start = 8.dp, top = 3.dp, bottom = 17.dp),
+                    lineHeight = 15.sp
+                )
+                Row (
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                        .padding(bottom = 14.dp)
+                ){
+                    Box(
+                        modifier = Modifier
+                            .size(30.dp, height = 10.dp)
+                            .padding(start = 5.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = icon1),
+                            contentDescription = null,
+                        )
+                    }
+                    Box(
+                        modifier = Modifier
+                            .size(18.dp, height = 10.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = icon2),
+                            contentDescription = null,
+                        )
+                    }
+                    Box(
+                        modifier = Modifier
+                            .size(30.dp, height = 10.dp)
+                            .padding(start = 5.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = icon3),
+                            contentDescription = null,
                         )
                     }
                 }
