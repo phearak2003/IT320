@@ -162,7 +162,7 @@ fun composeServiceBody() {
                                 .width(200.dp)
                                 .height(150.dp)
                                 .alpha(0.5f), // Change the opacity here
-                            contentScale = ContentScale.FillBounds
+                            contentScale = ContentScale.Crop
                     )
                 }
             }
@@ -260,9 +260,18 @@ fun composeServiceBody() {
                         CardData(
                             R.drawable.pc_domain,
                             R.drawable.ic_tovtrip,
-                            linearGradient(colors = listOf(Color(0xFF004081), Color(0xFF002340))),
+                            linearGradient(colors = listOf(Color(0xFF12A5FF), Color(0xFF33D1FF))),
                             "Tovtrip",
                             "Your new adventure awaits! Tourtrip empower the local"
+                        ),
+                        CardData(
+                            R.drawable.pc_bookmebus,
+                            R.drawable.ic_bookmebus,
+                            linearGradient(
+                                colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                            ),
+                            "BookMeBus",
+                            "Find the best deals on bus,and ferry tickets for most"
                         )
                     )
                 )
@@ -270,11 +279,20 @@ fun composeServiceBody() {
                     categoryTitle = "Transportation",
                     cardsData = listOf(
                         CardData(
-                            R.drawable.pc_domain,
-                            R.drawable.ic_domain_blue,
-                            linearGradient(colors = listOf(Color(0xFF004081), Color(0xFF002340))),
+                            R.drawable.pc_bookmebus,
+                            R.drawable.ic_bookmebus,
+                            linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                                    ),
                             "BookMeBus",
                             "Find the best deals on bus,and ferry tickets for most"
+                        ),
+                        CardData(
+                            R.drawable.pc_domain,
+                            R.drawable.ic_tovtrip,
+                            linearGradient(colors = listOf(Color(0xFF12A5FF), Color(0xFF33D1FF))),
+                            "Tovtrip",
+                            "Your new adventure awaits! Tourtrip empower the local"
                         )
                     )
                 )
@@ -282,36 +300,57 @@ fun composeServiceBody() {
                     categoryTitle = "Education & Training",
                     cardsData = listOf(
                         CardData(
-                            R.drawable.pc_domain,
-                            R.drawable.ic_domain_blue,
-                            linearGradient(colors = listOf(Color(0xFF004081), Color(0xFF002340))),
+                            R.drawable.pc_ebook,
+                            R.drawable.ic_ebook,
+                            linearGradient(colors = listOf(Color(0xFFffffff), Color(0xFFffffff))),
                             "Ebook Cambodia",
                             "Get unlimited audiobooks and political opinions"
-                        )
+                        ),
+                                CardData(
+                                R.drawable.pc_ebook,
+                        R.drawable.ic_ebook,
+                        linearGradient(colors = listOf(Color(0xFFffffff), Color(0xFFffffff))),
+                        "Ebook Cambodia",
+                        "Get unlimited audiobooks and political opinions"
+                    )
                     )
                 )
                 CategoryColumn(
                     categoryTitle = "Entertainment",
                     cardsData = listOf(
                         CardData(
-                            R.drawable.pc_domain,
-                            R.drawable.ic_domain_blue,
-                            linearGradient(colors = listOf(Color(0xFF004081), Color(0xFF002340))),
+                            R.drawable.pc_liveby,
+                            R.drawable.ic_liveby,
+                            linearGradient(colors = listOf(Color(0xFF23274F), Color(0xFF23274F))),
                             "LIVE. by Wonderpass",
                             "The 'LIVE. by Wonderpass' system"
-                        )
+                        ),
+                                CardData(
+                                R.drawable.pc_1byte,
+                        R.drawable.ic_1byte,
+                        linearGradient(colors = listOf(Color(0xFF042548), Color(0xFF042548))),
+                        "1Byte",
+                        "The best domain and web hosting providers"
+                    )
                     )
                 )
                 CategoryColumn(
                     categoryTitle = "Technology",
                     cardsData = listOf(
                         CardData(
-                            R.drawable.pc_domain,
-                            R.drawable.ic_domain_blue,
-                            linearGradient(colors = listOf(Color(0xFF004081), Color(0xFF002340))),
+                            R.drawable.pc_1byte,
+                            R.drawable.ic_1byte,
+                            linearGradient(colors = listOf(Color(0xFF042548), Color(0xFF042548))),
                             "1Byte",
                             "The best domain and web hosting providers"
-                        )
+                        ),
+                                CardData(
+                                R.drawable.pc_liveby,
+                        R.drawable.ic_liveby,
+                        linearGradient(colors = listOf(Color(0xFF23274F), Color(0xFF23274F))),
+                        "LIVE. by Wonderpass",
+                        "The 'LIVE. by Wonderpass' system"
+                    )
                     )
                 )
             }
