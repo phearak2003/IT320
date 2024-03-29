@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -121,11 +122,13 @@ fun ComposeServices(navController: NavController) {
 fun composeServiceBody() {
     Column(
             modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 100.dp)
+                .fillMaxSize()
+                .padding(top = 100.dp)
+                .verticalScroll(rememberScrollState())
     ) {
         Box {
-            Row(Modifier
+            Row(
+                Modifier
                     .fillMaxWidth()
                     .padding(start = 15.dp)) {
                 Column(
@@ -152,14 +155,14 @@ fun composeServiceBody() {
                             painter = painterResource(id = R.drawable.ic_service),
                             contentDescription = null,
                             modifier = Modifier
-                                    .background(
-                                            shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
-                                            color = Secondary
-                                    )
-                                    .width(200.dp)
-                                    .height(150.dp)
-                                    .alpha(0.5f), // Change the opacity here
-                            contentScale = ContentScale.FillBounds
+                                .background(
+                                    shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
+                                    color = Secondary
+                                )
+                                .width(200.dp)
+                                .height(150.dp)
+                                .alpha(0.5f), // Change the opacity here
+                            contentScale = ContentScale.Crop
                     )
                 }
             }
@@ -211,82 +214,145 @@ fun composeServiceBody() {
                         }
                     }
                 }
-                Column(modifier = Modifier
-                        .padding(15.dp)
-                        .fillMaxSize()) {
-                    Text(
-                            text = "Goverments Services",
-                            textAlign = TextAlign.Start,
-                            color = White,
-                            fontSize = 12.sp,
-                            modifier = Modifier.padding(bottom = 10.dp),
-                            fontWeight = FontWeight.Bold
+                CategoryColumn(
+                    categoryTitle = "Goverments Services",
+                    cardsData = listOf(
+                        CardData(
+                            R.drawable.pc_domain,
+                            R.drawable.ic_domain_blue,
+                            linearGradient(colors = listOf(Color(0xFF004081), Color(0xFF002340))),
+                            "Domain .kh",
+                            "Domain Name .kh Registration"
+                        ),
+                        CardData(
+                            R.drawable.pc_cartax,
+                            R.drawable.ic_tax,
+                            linearGradient(
+                                colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                            ),
+                            "Road Tax",
+                            "General Department of Taxation",
+                        ),
+                        CardData(
+                            R.drawable.pc_propertytax,
+                            R.drawable.ic_tax,
+                            linearGradient(
+                                colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                            ),
+                            "Property Tax",
+                            "General Department of Taxation",
+                        ),
+                        CardData(
+                            R.drawable.pc_prefillingtax,
+                            R.drawable.ic_tax,
+                            linearGradient(
+                                colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                            ),
+                            "Prefilling Tax",
+                            "General Department of Taxation",
+                        )
                     )
+                )
 
-                    Row(
-                            modifier = Modifier
-                                    .fillMaxWidth()
-                                    .horizontalScroll(rememberScrollState())
-                    ) {
-                        Box(
-                                modifier = Modifier.width(300.dp) // Use weight modifier instead of width
-                        ) {
-                            cardWithRoundIcon(
-                                    R.drawable.pc_domain,
-                                    R.drawable.ic_domain_blue,
-                                    linearGradient(
-                                            colors = listOf(Color(0xFF004081), Color(0xFF002340)) // Example gradient from dark blue to light blue
+                CategoryColumn(
+                    categoryTitle = "Travel & Tours",
+                    cardsData = listOf(
+                        CardData(
+                            R.drawable.pc_domain,
+                            R.drawable.ic_tovtrip,
+                            linearGradient(colors = listOf(Color(0xFF12A5FF), Color(0xFF33D1FF))),
+                            "Tovtrip",
+                            "Your new adventure awaits! Tourtrip empower the local"
+                        ),
+                        CardData(
+                            R.drawable.pc_bookmebus,
+                            R.drawable.ic_bookmebus,
+                            linearGradient(
+                                colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
+                            ),
+                            "BookMeBus",
+                            "Find the best deals on bus,and ferry tickets for most"
+                        )
+                    )
+                )
+                CategoryColumn(
+                    categoryTitle = "Transportation",
+                    cardsData = listOf(
+                        CardData(
+                            R.drawable.pc_bookmebus,
+                            R.drawable.ic_bookmebus,
+                            linearGradient(
+                                    colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
                                     ),
-                                    "Domain .kh",
-                                    "Domain Name .kh Registration",
-                                    200
-                            )
-                        }
-                        Box(
-                                modifier = Modifier.width(300.dp) // Use weight modifier instead of width
-                        ) {
-                            cardWithRoundIcon(
-                                    R.drawable.pc_cartax,
-                                    R.drawable.ic_tax,
-                                    linearGradient(
-                                            colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
-                                    ),
-                                    "Road Tax",
-                                    "General Department of Taxation",
-                                    200
-                            )
-                        }
-                        Box(
-                                modifier = Modifier.width(300.dp) // Use weight modifier instead of width
-                        ) {
-                            cardWithRoundIcon(
-                                    R.drawable.pc_propertytax,
-                                    R.drawable.ic_tax,
-                                    linearGradient(
-                                            colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
-                                    ),
-                                    "Property Tax",
-                                    "General Department of Taxation",
-                                    200
-                            )
-                        }
-                        Box(
-                                modifier = Modifier.width(300.dp) // Use weight modifier instead of width
-                        ) {
-                            cardWithRoundIcon(
-                                    R.drawable.pc_prefillingtax,
-                                    R.drawable.ic_tax,
-                                    linearGradient(
-                                            colors = listOf(Color(0xFFffffff), Color(0xFFffffff)) // Example gradient from dark blue to light blue
-                                    ),
-                                    "Prefilling Tax",
-                                    "General Department of Taxation",
-                                    200
-                            )
-                        }
-                    }
-
-                }
+                            "BookMeBus",
+                            "Find the best deals on bus,and ferry tickets for most"
+                        ),
+                        CardData(
+                            R.drawable.pc_domain,
+                            R.drawable.ic_tovtrip,
+                            linearGradient(colors = listOf(Color(0xFF12A5FF), Color(0xFF33D1FF))),
+                            "Tovtrip",
+                            "Your new adventure awaits! Tourtrip empower the local"
+                        )
+                    )
+                )
+                CategoryColumn(
+                    categoryTitle = "Education & Training",
+                    cardsData = listOf(
+                        CardData(
+                            R.drawable.pc_ebook,
+                            R.drawable.ic_ebook,
+                            linearGradient(colors = listOf(Color(0xFFffffff), Color(0xFFffffff))),
+                            "Ebook Cambodia",
+                            "Get unlimited audiobooks and political opinions"
+                        ),
+                                CardData(
+                                R.drawable.pc_ebook,
+                        R.drawable.ic_ebook,
+                        linearGradient(colors = listOf(Color(0xFFffffff), Color(0xFFffffff))),
+                        "Ebook Cambodia",
+                        "Get unlimited audiobooks and political opinions"
+                    )
+                    )
+                )
+                CategoryColumn(
+                    categoryTitle = "Entertainment",
+                    cardsData = listOf(
+                        CardData(
+                            R.drawable.pc_liveby,
+                            R.drawable.ic_liveby,
+                            linearGradient(colors = listOf(Color(0xFF23274F), Color(0xFF23274F))),
+                            "LIVE. by Wonderpass",
+                            "The 'LIVE. by Wonderpass' system"
+                        ),
+                                CardData(
+                                R.drawable.pc_1byte,
+                        R.drawable.ic_1byte,
+                        linearGradient(colors = listOf(Color(0xFF042548), Color(0xFF042548))),
+                        "1Byte",
+                        "The best domain and web hosting providers"
+                    )
+                    )
+                )
+                CategoryColumn(
+                    categoryTitle = "Technology",
+                    cardsData = listOf(
+                        CardData(
+                            R.drawable.pc_1byte,
+                            R.drawable.ic_1byte,
+                            linearGradient(colors = listOf(Color(0xFF042548), Color(0xFF042548))),
+                            "1Byte",
+                            "The best domain and web hosting providers"
+                        ),
+                                CardData(
+                                R.drawable.pc_liveby,
+                        R.drawable.ic_liveby,
+                        linearGradient(colors = listOf(Color(0xFF23274F), Color(0xFF23274F))),
+                        "LIVE. by Wonderpass",
+                        "The 'LIVE. by Wonderpass' system"
+                    )
+                    )
+                )
             }
         }
     }
@@ -357,14 +423,14 @@ fun cardWithRoundIcon(image: Int, icon: Int, iconBackground: Brush, name: String
                                     .size(40.dp)
                                     .background(shape = CircleShape, brush = iconBackground)
                                     .border(shape = CircleShape, width = 1.dp, color = White)
-                                    .size(40.dp),
+                                 ,
                             contentAlignment = Alignment.Center,
                     ) {
                         Image(
                                 painter = painterResource(id = icon),
                                 contentDescription = null,
                                 modifier = Modifier
-                                        .size(25.dp),
+                                    .size(25.dp),
                                 contentScale = ContentScale.Crop
                         )
                     }
@@ -389,7 +455,8 @@ fun cardWithRoundIcon(image: Int, icon: Int, iconBackground: Brush, name: String
                             textAlign = TextAlign.Start,
                             fontSize = 12.sp,
                             color = Color(0xFF89949F),
-                            modifier = Modifier.padding(start = 10.dp, top = 15.dp)
+                            modifier = Modifier.padding(start = 10.dp, top = 20.dp),
+                            lineHeight = 12.sp
                     )
                 }
 
@@ -397,5 +464,46 @@ fun cardWithRoundIcon(image: Int, icon: Int, iconBackground: Brush, name: String
         }
     }
 }
+@Composable
+fun CategoryColumn(
+    categoryTitle: String,
+    cardsData: List<CardData>
+) {
+    Column(modifier = Modifier.padding(15.dp).fillMaxSize()) {
+        Text(
+            text = categoryTitle,
+            textAlign = TextAlign.Start,
+            color = White,
+            fontSize = 12.sp,
+            modifier = Modifier.padding(bottom = 10.dp),
+            fontWeight = FontWeight.Bold
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())
+        ) {
+            cardsData.forEach { cardData ->
+                Box(modifier = Modifier.width(300.dp)) {
+                    cardWithRoundIcon(
+                        cardData.imageResourceId,
+                        cardData.iconResourceId,
+                        cardData.gradient,
+                        cardData.title,
+                        cardData.description,
+                        200
+                    )
+                }
+            }
+        }
+    }
+}
+
+data class CardData(
+    val imageResourceId: Int,
+    val iconResourceId: Int,
+    val gradient: Brush,
+    val title: String,
+    val description: String
+)
+
 
 
