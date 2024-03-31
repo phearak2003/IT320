@@ -20,12 +20,15 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -44,6 +47,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -150,7 +154,8 @@ fun composeTransferBody(){
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 80.dp),
+                .padding(top = 80.dp)
+                .verticalScroll(rememberScrollState()),
             contentAlignment = Alignment.TopCenter
         ){
             Column(
@@ -196,7 +201,7 @@ fun composeTransferBody(){
                                 .height(78.dp)
                                 .padding(start = 20.dp, end = 20.dp, top = 18.dp)
                                 .border(
-                                    BorderStroke(1.dp, Color(0xFF67737F)),
+                                    BorderStroke(1.dp, Color(0xFF3B4851)),
                                     shape = RoundedCornerShape(5.dp)
                                 )
                         ) {
@@ -284,7 +289,9 @@ fun composeTransferBody(){
                                 modifier = Modifier
                                     .clickable { selectedCurrency = Currency.USD }
                                     .background(
-                                        color = if (selectedCurrency == Currency.USD) Color(0xFF5596BA) else Color.Transparent,
+                                        color = if (selectedCurrency == Currency.USD) Color(
+                                            0xFF5596BA
+                                        ) else Color.Transparent,
                                         shape = RoundedCornerShape(10.dp)
                                     )
                                     .size(180.dp, 36.dp)
@@ -315,7 +322,9 @@ fun composeTransferBody(){
                                 modifier = Modifier
                                     .clickable { selectedCurrency = Currency.RIEL }
                                     .background(
-                                        color = if (selectedCurrency == Currency.RIEL) Color(0xFF5596BA) else Color.Transparent,
+                                        color = if (selectedCurrency == Currency.RIEL) Color(
+                                            0xFF5596BA
+                                        ) else Color.Transparent,
                                         shape = RoundedCornerShape(10.dp)
                                     )
                                     .size(180.dp, 36.dp)
@@ -363,7 +372,6 @@ fun composeTransferBody(){
                         )
                     }
 
-
                     Row(modifier = Modifier.padding(20.dp)) {
                         Image(
                             painter = painterResource(id = R.drawable.ic_exclamation),
@@ -404,7 +412,136 @@ fun composeTransferBody(){
                             placeholder = { Text("\uD83D\uDD8A    Remark (optional)") },
                         )
                     }
+                    Text(
+                        text = "Summary",
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        fontSize = 17.sp,
+                        color = Color(0xFF5596BA),
+                        modifier = Modifier.padding(20.dp)
+                    )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color(0xFF1D2F38))
+                            .padding(start = 20.dp, end = 20.dp,bottom = 100.dp)
+                            .border(
+                                BorderStroke(1.dp, Color(0xFF67737F)),
+                                shape = RoundedCornerShape(5.dp)
+                            ),
+                        verticalArrangement= Arrangement.Center
+                    ){
+                        Column(modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 20.dp, horizontal = 15.dp)) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(5.dp)
+                            ) {
+                                Text(
+                                    text = "Transfer Amount:",
+                                    fontWeight = FontWeight.Normal,
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 10.sp,
+                                    color = Color(0xFF67737F),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                                Text(
+                                    text = "50,000.00 KHR",
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.End,
+                                    fontSize = 10.sp,
+                                    color = White,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                            }
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(5.dp)
+                            ) {
+                                Text(
+                                    text = "Amount to Receive:",
+                                    fontWeight = FontWeight.Normal,
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 10.sp,
+                                    color = Color(0xFF67737F),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                                Text(
+                                    text = "50,000.00 KHR",
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.End,
+                                    fontSize = 10.sp,
+                                    color = White,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                            }
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(5.dp)
+                            ) {
+                                Text(
+                                    text = "Fee:",
+                                    fontWeight = FontWeight.Normal,
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 10.sp,
+                                    color = Color(0xFF67737F),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                                Text(
+                                    text = "400.00 KHR",
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.End,
+                                    fontSize = 10.sp,
+                                    color = White,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                            }
+                            HorizontalDivider(
+                                color = Color.Gray,
+                                thickness = 1.dp,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(5.dp)
+
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(5.dp)
+                            ) {
+                                Text(
+                                    text = "Debit Amount:",
+                                    fontWeight = FontWeight.Normal,
+                                    textAlign = TextAlign.Start,
+                                    fontSize = 15.sp,
+                                    color = Color(0xFF67737F),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                                Text(
+                                    text = "50,400.00 KHR",
+                                    fontWeight = FontWeight.Bold,
+                                    textAlign = TextAlign.End,
+                                    fontSize = 15.sp,
+                                    color = White,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                            }
+                        }
+                    }
                 }
+
 
             }
         }
