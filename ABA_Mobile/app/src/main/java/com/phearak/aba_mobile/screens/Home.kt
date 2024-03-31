@@ -283,24 +283,24 @@ fun Home(navigationController:NavController) {
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
                                 IconWithText(R.drawable.accounts, "Accounts", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAAccounts.screen) }
-                                IconWithText(R.drawable.accounts, "Cards", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAServices.screen) }
-                                IconWithText(R.drawable.accounts, "Payment", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAPayment.screen) }
+                                IconWithText(R.drawable.ic_card, "Cards", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAServices.screen) }
+                                IconWithText(R.drawable.ic_payment, "Payment", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAPayment.screen) }
                             }
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                IconWithText(R.drawable.accounts, "New Account", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.AccountOpening.screen) }
-                                IconWithText(R.drawable.accounts, "E-Cash", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABATransfers.screen) }
-                                IconWithText(R.drawable.accounts, "Transfer", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.Transfer.screen) }
+                                IconWithText(R.drawable.ic_newaccount, "New Account", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.AccountOpening.screen) }
+                                IconWithText(R.drawable.ic_ecash, "E-Cash", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABATransfers.screen) }
+                                IconWithText(R.drawable.ic_transfer, "Transfer", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.Transfer.screen) }
                             }
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                IconWithText(R.drawable.accounts, "ABA Scan", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAScan.screen) }
-                                IconWithText(R.drawable.accounts, "Loans", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate("loan") }
-                                IconWithText(R.drawable.accounts, "Services", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAServices.screen) }
+                                IconWithText(R.drawable.ic_abascan, "ABA Scan", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAScan.screen) }
+                                IconWithText(R.drawable.ic_abaloan, "Loans", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate("loan") }
+                                IconWithText(R.drawable.ic_service, "Services", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAServices.screen) }
                             }
                         }
                     }
@@ -311,7 +311,8 @@ fun Home(navigationController:NavController) {
                         backgroundColor = Red,
                         navigateToScreen = {
                             navigationController.navigate(Screens.FavoriteTransferScreen.screen)
-                        }
+                        },
+                        icon = R.drawable.transfer,
                     )
 
                     QuickShortcut(
@@ -320,7 +321,8 @@ fun Home(navigationController:NavController) {
                         backgroundColor = Sky,
                         navigateToScreen = {
                             navigationController.navigate(Screens.FavoriteScreen.screen)
-                        }
+                        },
+                                icon = R.drawable.dollar,
                     )
                 }
 
@@ -359,7 +361,8 @@ fun QuickShortcut(
     text1: String,
     text2: String,
     backgroundColor: Color,
-    navigateToScreen: () -> Unit // New parameter for navigation
+    navigateToScreen: () -> Unit ,
+    icon: Int
 ) {
     Box(
         modifier = Modifier
@@ -394,7 +397,7 @@ fun QuickShortcut(
                     }
                     Box(contentAlignment = Alignment.BottomEnd) {
                         Image(
-                            painter = painterResource(R.drawable.dollar),
+                            painter = painterResource(icon),
                             contentDescription = "Your Image",
                             modifier = Modifier
                                 .padding(start = 90.dp,top = 80.dp)
@@ -439,7 +442,7 @@ fun IconWithText(icon: Int, label: String, gradient: Brush, onClick: () -> Unit)
                 contentDescription = "Notifications",
                 modifier = Modifier
                     .width(screen / 3)
-                    .aspectRatio(2.7f)
+                    .aspectRatio(3.5f)
             )
             Text(
                 text = label,
