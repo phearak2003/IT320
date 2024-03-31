@@ -40,13 +40,18 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.phearak.aba_mobile.screens.AccountOpeningScreen
 import com.phearak.aba_mobile.screens.AccountsScreen
+import com.phearak.aba_mobile.screens.FavoriteScreen
+import com.phearak.aba_mobile.screens.FavoriteTransfer
 import com.phearak.aba_mobile.screens.GovernmentServices
 import com.phearak.aba_mobile.screens.Home
+import com.phearak.aba_mobile.screens.Loan
 import com.phearak.aba_mobile.screens.LoansScreen
 import com.phearak.aba_mobile.screens.Locator
+import com.phearak.aba_mobile.screens.PaymentScreen
 import com.phearak.aba_mobile.screens.ScanQrScreen
 import com.phearak.aba_mobile.screens.Screens
 import com.phearak.aba_mobile.screens.ServicesScreen
+import com.phearak.aba_mobile.screens.TransferScreen
 import com.phearak.aba_mobile.screens.TransfersScreen
 import com.phearak.aba_mobile.ui.theme.ABA_MobileTheme
 import com.phearak.aba_mobile.ui.theme.Primary
@@ -60,13 +65,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
-                    //ScanQrScreen(navController = navController)
-                    //TransfersScreen(navController)
-                    //ServicesScreen(navController)
-                    //AccountsScreen(navController)
-                    AccountOpeningScreen(navController)
-                   // Nav()
+                    Nav()
                 }
             }
         }
@@ -85,103 +84,24 @@ fun Nav(){
     ModalNavigationDrawer(
         drawerState = drawerState,
         gesturesEnabled = true,
-        drawerContent = {
-            ModalDrawerSheet {
-                Box(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(150.dp)){
-                    Text(text = "")
-                }
+        drawerContent = {  }) {
 
-                Divider()
-
-                NavigationDrawerItem(
-                    label = {Text(text = "Home", color = Primary)},
-                    selected = false,
-                    icon = {
-                        Icon(imageVector = Icons.Default.Home,
-                            contentDescription = "home",
-                            tint = Primary)},
-                    onClick = {
-                        coroutineScope.launch {
-                            drawerState.close()
-                        }
-
-                        navigationController.navigate(Screens.Home.screen){
-                            popUpTo(0)
-                        }
-                    }
-                )
-
-                NavigationDrawerItem(label = {
-                    Text(text = "ABA Cash Back", color = Primary)},
-                    selected = false,
-                    icon = {
-                        Icon(imageVector = Icons.Default.Home,
-                            contentDescription = "abaCashBack",
-                            tint = Primary)},
-                    onClick = {
-                        coroutineScope.launch {
-                            drawerState.close()
-                        }
-
-                        Toast.makeText(context, "Cash Back", Toast.LENGTH_SHORT).show()
-                    }
-                )
-            }
-        }) {
-        Scaffold(
-            topBar = {
-                val corotineScope = rememberCoroutineScope()
-                TopAppBar(
-                    title = { Text(text = "ABA Bank") },
-                    actions = {
-                        IconButton(onClick = { /* Handle bell icon click */ }) {
-                            Icon(
-                                Icons.Rounded.Notifications,
-                                tint = Color.White,
-                                contentDescription = "Notifications"
-                            )
-                        }
-                        IconButton(onClick = { /* Handle bell icon click */ }) {
-                            Icon(
-                                Icons.Rounded.AddCircle,
-                                tint = Color.White,
-                                contentDescription = "Scan"
-                            )
-                        }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Primary,
-                        titleContentColor = Color.White,
-                        navigationIconContentColor = Color.White
-                    ),
-                    navigationIcon = {
-                        IconButton(onClick = {
-                            coroutineScope.launch {
-                                drawerState.open()
-                            }
-                        }) {
-                            Icon(
-                                Icons.Rounded.Menu,
-                                contentDescription = "Menu"
-                            )
-                        }
-                    }
-                )
-            }
-        ) {
             NavHost(
                 navController = navigationController,
                 startDestination = Screens.Home.screen){
-                composable(Screens.Home.screen){ GovernmentServices() }
-                composable(Screens.Home.screen){ Locator() }
-                composable(Screens.Home.screen){ Home() }
-                composable(Screens.Home.screen){ ScanQrScreen(navigationController) }
-                composable(Screens.Home.screen){ TransfersScreen(navigationController) }
-                composable(Screens.Home.screen){ AccountsScreen(navigationController) }
-                composable(Screens.Home.screen){ ServicesScreen(navigationController) }
+                composable(Screens.Home.screen){ Home(navigationController) }
+                composable(Screens.ABAScan.screen){ ScanQrScreen(navigationController) }
+                composable(Screens.ABATransfers.screen){ TransfersScreen(navigationController) }
+                composable(Screens.Transfer.screen){ TransferScreen(navigationController) }
+                composable(Screens.ABAAccounts.screen){ AccountsScreen(navigationController) }
+                composable(Screens.ABAServices.screen){ ServicesScreen(navigationController) }
+                composable(Screens.FavoriteScreen.screen){ FavoriteScreen(navigationController) }
+                composable(Screens.FavoriteTransferScreen.screen){ FavoriteTransfer(navigationController) }
+                composable(Screens.AccountOpening.screen){ AccountOpeningScreen(navigationController) }
+                composable(Screens.AccountOpening.screen){ AccountOpeningScreen(navigationController) }
+                composable(Screens.ABAPayment.screen){ PaymentScreen(navigationController) }
+                composable("loan"){ LoansScreen(navigationController) }
             }
-        }
+
     }
 }
