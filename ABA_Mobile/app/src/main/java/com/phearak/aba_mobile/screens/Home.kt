@@ -90,6 +90,7 @@ import com.phearak.aba_mobile.ui.theme.Primary
 import com.phearak.aba_mobile.ui.theme.Red
 import com.phearak.aba_mobile.ui.theme.Main
 import com.phearak.aba_mobile.ui.theme.Sky
+import com.phearak.aba_mobile.ui.theme.bg
 import kotlinx.coroutines.launch
 
 
@@ -122,38 +123,38 @@ fun Home(navigationController:NavController) {
         ),
         DrawerItem(
             title = "ABA Cashback",
-            selectedIcon = R.drawable.menu_castle,
-            unselectedIcon = R.drawable.menu_castle,
+            selectedIcon = R.drawable.cashback,
+            unselectedIcon = R.drawable.cashback,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Schedules",
-            selectedIcon = R.drawable.menu_castle,
-            unselectedIcon = R.drawable.menu_castle,
+            selectedIcon = R.drawable.schedule,
+            unselectedIcon = R.drawable.schedule,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Checkbook",
-            selectedIcon = R.drawable.menu_castle,
-            unselectedIcon = R.drawable.menu_castle,
+            selectedIcon = R.drawable.checkbook,
+            unselectedIcon = R.drawable.checkbook,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Exchange Rate",
-            selectedIcon = R.drawable.menu_castle,
-            unselectedIcon = R.drawable.menu_castle,
+            selectedIcon = R.drawable.exchangerate,
+            unselectedIcon = R.drawable.exchangerate,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Locator",
-            selectedIcon = R.drawable.menu_castle,
-            unselectedIcon = R.drawable.menu_castle,
+            selectedIcon = R.drawable.locator,
+            unselectedIcon = R.drawable.locator,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Invite Friend",
-            selectedIcon = R.drawable.menu_castle,
-            unselectedIcon = R.drawable.menu_castle,
+            selectedIcon = R.drawable.invite,
+            unselectedIcon = R.drawable.invite,
             navScreen = Screens.ABAServices.screen
         ),
     )
@@ -165,7 +166,7 @@ fun Home(navigationController:NavController) {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(Main)
+                            .background(Secondary)
                     ) {
                         Spacer(modifier = Modifier.height(26.dp))
 
@@ -187,7 +188,7 @@ fun Home(navigationController:NavController) {
                                 }
 
                                 Column(modifier = Modifier.padding(start = 15.dp)) {
-                                    Text(text = "Hello, Phearak!", modifier = Modifier.padding(bottom = 7.dp), color = Color.White, fontSize = 20.sp, fontWeight = FontWeight(600))
+                                    Text(text = "Hello, AUB!", modifier = Modifier.padding(bottom = 7.dp), color = Color.White, fontSize = 20.sp, fontWeight = FontWeight(600))
                                     Text(text = "View Profile >", color = Color.White, fontWeight = FontWeight(300))
                                 }
                             }
@@ -218,7 +219,8 @@ fun Home(navigationController:NavController) {
                                         painter = painterResource(id = if (index == selectedItemIndex) {
                                              drawerItem.selectedIcon
                                         } else drawerItem.unselectedIcon),
-                                        contentDescription = drawerItem.title
+                                        contentDescription = drawerItem.title,
+                                        modifier = Modifier.size(25.dp)
                                     )
                                 },
                                 modifier = Modifier
