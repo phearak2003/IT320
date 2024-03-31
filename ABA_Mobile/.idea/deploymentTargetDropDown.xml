@@ -5,13 +5,16 @@
       <entry key="AccountOpening">
         <State />
       </entry>
-      <entry key="Loans">
+      <entry key="Home">
+        <State />
+      </entry>
+      <entry key="Loan">
         <State />
       </entry>
       <entry key="PaymentPreview">
         <State />
       </entry>
-      <entry key="ServicesScreenPreview">
+      <entry key="TransferPreview">
         <State />
       </entry>
       <entry key="app">

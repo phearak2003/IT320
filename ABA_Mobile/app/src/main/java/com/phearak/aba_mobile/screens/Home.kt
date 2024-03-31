@@ -68,6 +68,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
@@ -94,8 +95,8 @@ import kotlinx.coroutines.launch
 
 data class DrawerItem(
     val title: String,
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector,
+    val selectedIcon: Int,
+    val unselectedIcon: Int,
     val navScreen: String
 )
 
@@ -115,44 +116,44 @@ fun Home(navigationController:NavController) {
     val items = listOf(
         DrawerItem(
             title = "Government Services",
-            selectedIcon = Icons.Filled.Home,
-            unselectedIcon = Icons.Outlined.Home,
+            selectedIcon = R.drawable.menu_castle,
+            unselectedIcon = R.drawable.menu_castle,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "ABA Cashback",
-            selectedIcon = Icons.Filled.Info,
-            unselectedIcon = Icons.Outlined.Info,
+            selectedIcon = R.drawable.menu_castle,
+            unselectedIcon = R.drawable.menu_castle,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Schedules",
-            selectedIcon = Icons.Filled.Favorite,
-            unselectedIcon = Icons.Outlined.FavoriteBorder,
+            selectedIcon = R.drawable.menu_castle,
+            unselectedIcon = R.drawable.menu_castle,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Checkbook",
-            selectedIcon = Icons.Filled.Favorite,
-            unselectedIcon = Icons.Outlined.FavoriteBorder,
+            selectedIcon = R.drawable.menu_castle,
+            unselectedIcon = R.drawable.menu_castle,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Exchange Rate",
-            selectedIcon = Icons.Filled.Favorite,
-            unselectedIcon = Icons.Outlined.FavoriteBorder,
+            selectedIcon = R.drawable.menu_castle,
+            unselectedIcon = R.drawable.menu_castle,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Locator",
-            selectedIcon = Icons.Filled.Favorite,
-            unselectedIcon = Icons.Outlined.FavoriteBorder,
+            selectedIcon = R.drawable.menu_castle,
+            unselectedIcon = R.drawable.menu_castle,
             navScreen = Screens.ABAServices.screen
         ),
         DrawerItem(
             title = "Invite Friend",
-            selectedIcon = Icons.Filled.Favorite,
-            unselectedIcon = Icons.Outlined.FavoriteBorder,
+            selectedIcon = R.drawable.menu_castle,
+            unselectedIcon = R.drawable.menu_castle,
             navScreen = Screens.ABAServices.screen
         ),
     )
@@ -213,10 +214,10 @@ fun Home(navigationController:NavController) {
                                     navigationController.navigate(drawerItem.navScreen)
                                 },
                                 icon = {
-                                    Icon(
-                                        imageVector = if (index == selectedItemIndex) {
-                                            drawerItem.selectedIcon
-                                        } else drawerItem.unselectedIcon,
+                                    Image(
+                                        painter = painterResource(id = if (index == selectedItemIndex) {
+                                             drawerItem.selectedIcon
+                                        } else drawerItem.unselectedIcon),
                                         contentDescription = drawerItem.title
                                     )
                                 },
@@ -281,25 +282,25 @@ fun Home(navigationController:NavController) {
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                IconWithText(Icons.Rounded.AccountBox, "Accounts", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAAccounts.screen) }
-                                IconWithText(Icons.Rounded.Email, "Cards", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAServices.screen) }
-                                IconWithText(Icons.Rounded.AccountBox, "Payment", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAPayment.screen) }
+                                IconWithText(R.drawable.accounts, "Accounts", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAAccounts.screen) }
+                                IconWithText(R.drawable.accounts, "Cards", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAServices.screen) }
+                                IconWithText(R.drawable.accounts, "Payment", Brush.horizontalGradient(listOf(Primary, Color.White))){ navigationController.navigate(Screens.ABAPayment.screen) }
                             }
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                IconWithText(Icons.Rounded.AccountBox, "New Account", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.AccountOpening.screen) }
-                                IconWithText(Icons.Rounded.AccountBox, "E-Cash", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABATransfers.screen) }
-                                IconWithText(Icons.Rounded.AccountBox, "Transfer", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.Transfer.screen) }
+                                IconWithText(R.drawable.accounts, "New Account", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.AccountOpening.screen) }
+                                IconWithText(R.drawable.accounts, "E-Cash", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABATransfers.screen) }
+                                IconWithText(R.drawable.accounts, "Transfer", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.Transfer.screen) }
                             }
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceEvenly
                             ) {
-                                IconWithText(Icons.Rounded.AccountBox, "ABA Scan", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAScan.screen) }
-                                IconWithText(Icons.Rounded.AccountBox, "Loans", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate("loan") }
-                                IconWithText(Icons.Rounded.AccountBox, "Services", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAServices.screen) }
+                                IconWithText(R.drawable.accounts, "ABA Scan", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAScan.screen) }
+                                IconWithText(R.drawable.accounts, "Loans", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate("loan") }
+                                IconWithText(R.drawable.accounts, "Services", Brush.horizontalGradient(listOf(Color.White, Primary))){ navigationController.navigate(Screens.ABAServices.screen) }
                             }
                         }
                     }
@@ -409,7 +410,7 @@ fun QuickShortcut(
 }
 
 @Composable
-fun IconWithText(icon: ImageVector, label: String, gradient: Brush, onClick: () -> Unit) {
+fun IconWithText(icon: Int, label: String, gradient: Brush, onClick: () -> Unit) {
     val screen = LocalConfiguration.current.screenWidthDp.dp
 
     Box(
@@ -433,9 +434,8 @@ fun IconWithText(icon: ImageVector, label: String, gradient: Brush, onClick: () 
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(
-                icon,
-                tint = Color.White,
+            Image(
+                painter = painterResource(icon),
                 contentDescription = "Notifications",
                 modifier = Modifier
                     .width(screen / 3)
@@ -444,7 +444,7 @@ fun IconWithText(icon: ImageVector, label: String, gradient: Brush, onClick: () 
             Text(
                 text = label,
                 color = Color.White,
-                fontSize = 15.sp,
+                fontSize = 13.sp,
                 modifier = Modifier.padding(top = 8.dp),
                 textAlign = TextAlign.Center
             )
