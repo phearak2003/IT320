@@ -90,6 +90,7 @@ import com.phearak.aba_mobile.ui.theme.Primary
 import com.phearak.aba_mobile.ui.theme.Red
 import com.phearak.aba_mobile.ui.theme.Main
 import com.phearak.aba_mobile.ui.theme.Sky
+import com.phearak.aba_mobile.ui.theme.bg
 import kotlinx.coroutines.launch
 
 
@@ -165,7 +166,7 @@ fun Home(navigationController:NavController) {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(Main)
+                            .background(Secondary)
                     ) {
                         Spacer(modifier = Modifier.height(26.dp))
 
@@ -218,7 +219,8 @@ fun Home(navigationController:NavController) {
                                         painter = painterResource(id = if (index == selectedItemIndex) {
                                              drawerItem.selectedIcon
                                         } else drawerItem.unselectedIcon),
-                                        contentDescription = drawerItem.title
+                                        contentDescription = drawerItem.title,
+                                        modifier = Modifier.size(25.dp)
                                     )
                                 },
                                 modifier = Modifier
